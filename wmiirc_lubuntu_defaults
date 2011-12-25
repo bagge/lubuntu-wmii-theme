@@ -1,0 +1,17 @@
+MODKEY=Mod4
+#WMII_NORMCOLORS='#cf6dfc #000000 #afa8b3'
+#WMII_FOCUSCOLORS='#ffffff #000000 #afa8b3'
+WMII_NORMCOLORS='#5555ff #000000 #200040'
+WMII_FOCUSCOLORS='#ffffff #000000 #200040'
+WMII_FONT='xft:UbuntuMono:pixelsize=14:style=bold'
+wmiir xwrite ctl bar on top
+
+wmiir write /tagrules <<EOF
+/.*:lxpanel:.*/ -> /./
+EOF
+
+status() {
+	echo -n $(uptime | sed 's/.*://; s/,//g')
+}
+
+

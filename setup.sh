@@ -28,6 +28,8 @@ function install_links {
         /usr/share/xsessions/wmii-lxpanel.desktop
     maybe_create $where_am_i/acpi/lid_event /etc/acpi/events/lid
     maybe_create $where_am_i/acpi/lid.sh /etc/acpi/lid.sh
+    maybe_create $where_am_i/wmiirc_lubuntu_defaults \
+        /etc/X11/wmii/wmiirc_lubuntu_defaults
 }
 
 function uninstall_links {
@@ -38,6 +40,21 @@ function uninstall_links {
     maybe_delete /usr/share/xsessions/wmii-lxpanel.desktop
     maybe_delete /etc/acpi/events/lid
     maybe_delete /etc/acpi/lid.sh
+    maybe_delete /etc/X11/wmii/wmiirc_lubuntu_defaults
+}
+
+function patch_wmiirc {
+    # Patch wmiirc.
+
+    wmiirc_file=/etc/X11/wmii/wmiirc
+    orig="wi_runconf -s wmiirc_local"
+    added="wi_runconf -s wmiirc_lubuntu_defaults"
+
+    if [ "$1" == "remove" ]; then
+        sed -i "/$added/d" $wmiirc_file
+    else
+        sed -i "s/$orig/$added\n$orig/" $wmiirc_file
+    fi
 }
 
 function usage {
@@ -59,12 +76,14 @@ if [ "$1" == "packages" ]; then
 fi
 
 if [ "$1" == "install" ]; then
+    patch_wmiirc
     install_links
     exit 0
 fi
 
 if [ "$1" == "uninstall" ]; then
     uninstall_links
+    patch_wmiirc remove
     exit 0
 fi
 
