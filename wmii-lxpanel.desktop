@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Wmii/LXDE
+Comment=Window manager improved 3
+Exec=/usr/bin/startwmii
+Icon=wmii.png
+Type=XSession

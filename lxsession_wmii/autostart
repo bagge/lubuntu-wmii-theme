@@ -1,0 +1,5 @@
+@xloadimage -onroot /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png
+@lxpanel --profile wmii
+@xscreensaver -no-splash
+@xfce4-power-manager
+@/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1

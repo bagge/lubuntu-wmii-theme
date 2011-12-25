@@ -1,0 +1,17 @@
+This folder contains a customization pack for Lubuntu.
+
+The idea is that everything is contained here instead of sprinkled throughout
+the system. Links are created in the appropriate places pointing to these files
+by the script setup.sh.
+
+Two main features are contained in this currently.
+1. WMII custom session: This is a Xsession setup with wmii and using lxsession
+and lxpanel from LXDE. The lxpanel has a tweaked theme.
+2. scripts run when lid is opened and closed. This will be used to set the
+screens correctly.
+
+The customizations use wmii acpi and acpid.
+To install the needed packages: ./setup.sh packages
+To install the customizations: ./setup.sh install
+To remove the customizations: ./setup.sh uninstall
+
