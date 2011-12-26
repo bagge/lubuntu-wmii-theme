@@ -71,7 +71,7 @@ if [ -z "$1" ]; then
 fi
 
 if [ "$1" == "packages" ]; then
-    apt-get install wmii acpi acpid
+    apt-get install wmii acpi acpid xloadimage
     exit 0
 fi
 
