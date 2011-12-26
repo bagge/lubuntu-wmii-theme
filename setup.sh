@@ -46,8 +46,8 @@ function uninstall_links {
 function create_lxpanel_settings {
     out_file=lxpanel_wmii/panels/panel
     cp -f lxpanel_wmii/panels/panel.template $out_file
-    vbox_button="Button { id=/usr/share/applications/virtualbox.desktop }"
-    remmina_button="Button { id=/usr/share/applications/remmina.desktop }"
+    vbox_button="Button { id=\/usr\/share\/applications\/virtualbox.desktop }"
+    remmina_button="Button { id=\/usr\/share\/applications\/remmina.desktop }"
     which virtualbox > /dev/null
     if [ $? -eq 1 ]; then
         sed -i "/$vbox_button/d" $out_file
