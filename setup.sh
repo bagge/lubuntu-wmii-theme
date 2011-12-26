@@ -43,6 +43,21 @@ function uninstall_links {
     maybe_delete /etc/X11/wmii/wmiirc_lubuntu_defaults
 }
 
+function create_lxpanel_settings {
+    out_file=lxpanel_wmii/panels/panel
+    cp -f lxpanel_wmii/panels/panel.template $out_file
+    vbox_button="Button { id=/usr/share/applications/virtualbox.desktop }"
+    remmina_button="Button { id=/usr/share/applications/remmina.desktop }"
+    which virtualbox > /dev/null
+    if [ $? -eq 1 ]; then
+        sed -i "/$vbox_button/d" $out_file
+    fi
+    which remmina > /dev/null
+    if [ $? -eq 1 ]; then
+        sed -i "/$remmina_button/d" $out_file
+    fi
+}
+
 function patch_wmiirc {
     # Patch wmiirc.
 
@@ -77,6 +92,7 @@ fi
 
 if [ "$1" == "install" ]; then
     patch_wmiirc
+    create_lxpanel_settings
     install_links
     exit 0
 fi

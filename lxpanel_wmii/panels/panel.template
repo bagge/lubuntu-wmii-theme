@@ -51,12 +51,8 @@ Plugin {
         Button {
             id=chromium-browser.desktop
         }
-        Button {
-            id=/usr/share/applications/virtualbox.desktop
-        }
-        Button {
-            id=/usr/share/applications/remmina.desktop
-        }
+        Button { id=/usr/share/applications/virtualbox.desktop }
+        Button { id=/usr/share/applications/remmina.desktop }
     }
 }
 
