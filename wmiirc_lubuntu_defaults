@@ -8,7 +8,19 @@ wmiir xwrite ctl bar on top
 
 wmiir write /tagrules <<EOF
 /.*:lxpanel:.*/ -> /./
+/.*:VirtualBox:.*/ -> vm
 EOF
+
+# Can't use these macros here! 
+# KeyGroup Lubuntu
+# Key $MODKEY-q # Close client
+# 	wmiir xwrite /client/sel/ctl kill
+
+# One way to add a keybinding
+# ( wmiir read keys | grep .; echo Mod4-q; echo ) | wmiir write keys
+#
+# Maybe it is possible to create an additional event loop that listens for
+# our custom eventis { while /bin/true; do echo hej; done } &.
 
 status() {
 	echo -n $(uptime | sed 's/.*://; s/,//g')
